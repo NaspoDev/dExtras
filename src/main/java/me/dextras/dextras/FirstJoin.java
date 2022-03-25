@@ -28,7 +28,7 @@ public class FirstJoin implements Listener {
         Player player = event.getPlayer();
 
         if (!player.hasPlayedBefore()) {
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player + " permission settemp" +
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission settemp" +
                     " betterrtp.bypass.cooldown true 10m");
         }
     }
