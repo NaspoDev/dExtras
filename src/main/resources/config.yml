@@ -1,5 +1,5 @@
 #DeltaRealms dExtras plugin is a quality of life plugin for DeltaRealms. It irons out kinks in other plugins that
-#server uses, and implements other qol features.
+#the server uses, and implements other qol features.
 
 #Permissions:
 # - dextras.use > Permissions to everything/every command in the plugin.
@@ -18,6 +18,6 @@ messages:
   general:
     prefix: "&8[&a&ldExtras&8] &r"
     reload: "dExtras has been reloaded."
-    noPermission: "&cYou do not have permission."
-  firstJoin:
-    homeReminder: "&eRemember to set a home! &6/sethome <home>"
+    no-permission: "&cYou do not have permission."
+  first-join:
+    home-reminder: "&eRemember to set a home! &6/sethome <home>"

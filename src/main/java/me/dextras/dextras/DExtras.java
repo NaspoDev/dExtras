@@ -8,6 +8,7 @@ public final class DExtras extends JavaPlugin {
 
     FirstJoin firstJoin = new FirstJoin(this);
     DExtrasCmds dExtrasCmds = new DExtrasCmds(this);
+    TabCompleter tabCompleter = new TabCompleter();
 
     @Override
     public void onEnable() {
@@ -17,6 +18,8 @@ public final class DExtras extends JavaPlugin {
 
         //DExtrasCmds
         Objects.requireNonNull(this.getCommand("dextras")).setExecutor(dExtrasCmds);
+        //TabCompleter
+        Objects.requireNonNull(this.getCommand("dextras")).setTabCompleter(tabCompleter);
 
         //FirstJoin
         if (this.getConfig().getBoolean("FirstJoin")) {

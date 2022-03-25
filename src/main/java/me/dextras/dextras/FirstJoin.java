@@ -42,7 +42,7 @@ public class FirstJoin implements Listener {
         int homes = ess.getUser(player).getHomes().size();
         if (homes == 0) {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.
-                    getConfig().getString("messages.firstJoin.homeReminder"))));
+                    getConfig().getString("messages.first-join.home-reminder"))));
         }
     }
 }

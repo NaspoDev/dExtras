@@ -23,12 +23,13 @@ public class DExtrasCmds implements CommandExecutor {
                 Player player = (Player) sender;
                 if (!(player.hasPermission("dextras.use"))) {
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.
-                            requireNonNull(plugin.getConfig().getString("messages.general.noPermission"))));
+                            requireNonNull(plugin.getConfig().getString("messages.general.no-permission"))));
                     return true;
                 }
                 if (args.length == 0) {
-                    player.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.general." +
-                            "prefix")) + "Did you mean " + ChatColor.GOLD + "/dextras reload " + ChatColor.WHITE + "?");
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.
+                            requireNonNull(plugin.getConfig().getString("messages.general.prefix")) +
+                            "Did you mean " + ChatColor.GOLD + "/dextras reload " + ChatColor.WHITE + "?"));
                     return true;
                 }
                 if (args[0].equalsIgnoreCase("reload")) {
