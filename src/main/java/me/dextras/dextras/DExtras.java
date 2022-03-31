@@ -9,6 +9,7 @@ public final class DExtras extends JavaPlugin {
     FirstJoin firstJoin = new FirstJoin(this);
     DExtrasCmds dExtrasCmds = new DExtrasCmds(this);
     TabCompleter tabCompleter = new TabCompleter();
+    TPRandom tpRandom = new TPRandom(this);
 
     @Override
     public void onEnable() {
@@ -18,6 +19,8 @@ public final class DExtras extends JavaPlugin {
 
         //DExtrasCmds
         Objects.requireNonNull(this.getCommand("dextras")).setExecutor(dExtrasCmds);
+        //TPRandom
+        Objects.requireNonNull(this.getCommand("tpr")).setExecutor(tpRandom);
         //TabCompleter
         Objects.requireNonNull(this.getCommand("dextras")).setTabCompleter(tabCompleter);
 
