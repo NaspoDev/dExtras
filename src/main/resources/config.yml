@@ -16,8 +16,8 @@ PCTeamFix: false
 
 messages:
   general:
-    prefix: "&8[&a&ldExtras&8] &r"
-    reload: "dExtras has been reloaded."
+    prefix: "&8[&6!&8] &r"
+    reload: "&7dExtras has been reloaded."
     no-permission: "&cYou do not have permission."
   first-join:
     home-reminder: "&eRemember to set a home! &6/sethome <home>"

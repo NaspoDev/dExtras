@@ -16,6 +16,8 @@ public class DExtrasCmds implements CommandExecutor {
         this.plugin = plugin;
     }
 
+    String prefix = plugin.getConfig().getString("messages.general.prefix");
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (label.equalsIgnoreCase("dextras")) {
@@ -27,22 +29,18 @@ public class DExtrasCmds implements CommandExecutor {
                     return true;
                 }
                 if (args.length == 0) {
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.
-                            requireNonNull(plugin.getConfig().getString("messages.general.prefix")) +
-                            "Did you mean " + ChatColor.GOLD + "/dextras reload " + ChatColor.WHITE + "?"));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                    "&7Did you mean " + "&6/dextras reload " + "&7?"));
                     return true;
                 }
                 if (args[0].equalsIgnoreCase("reload")) {
                     plugin.reloadConfig();
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                            Objects.requireNonNull(plugin.getConfig().getString("messages.general." +
-                                    "prefix")) + Objects.requireNonNull(plugin.getConfig().
-                                    getString("messages.general.reload"))));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                            Objects.requireNonNull(plugin.getConfig().getString("messages.general.reload"))));
                     return true;
                 }
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.
-                        requireNonNull(plugin.getConfig().getString("messages.general.prefix")) +
-                        "Did you mean &6/dextras reload&f?"));
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                        "&7Did you mean &6/dextras reload&7?"));
                 return true;
             }
             if (args.length == 0) {

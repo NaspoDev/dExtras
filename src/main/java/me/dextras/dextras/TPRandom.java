@@ -23,6 +23,8 @@ public class TPRandom implements CommandExecutor {
         this.plugin = plugin;
     }
 
+    String prefix = plugin.getConfig().getString("messages.general.prefix");
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (label.equalsIgnoreCase("tpr")) {
@@ -38,7 +40,7 @@ public class TPRandom implements CommandExecutor {
             }
 
             if (plugin.getServer().getOnlinePlayers().size() == 1) {
-                player.sendMessage("You're the only player online!");
+                player.sendMessage(prefix + "&7You're the only player online!");
                 return true;
             }
 
@@ -55,10 +57,9 @@ public class TPRandom implements CommandExecutor {
                 }
             } while (loop);
 
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                    "&7Teleporting to " + selected.getDisplayName() + "&7."));
             player.teleport(selected.getLocation());
-
-            player.sendMessage("Selected player: " + selected);
-            player.sendMessage("All online players: " + onlinePlayers);
         }
 
         return false;
