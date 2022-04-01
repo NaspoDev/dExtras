@@ -1,6 +1,6 @@
 name: dExtras
 version: '${project.version}'
-main: me.dextras.dextras.DExtras
+main: me.dextras.dextras.core.DExtras
 api-version: 1.18
 authors: [ Naspo ]
 description: A quality of life plugin for the DeltaRealms Minecraft server.

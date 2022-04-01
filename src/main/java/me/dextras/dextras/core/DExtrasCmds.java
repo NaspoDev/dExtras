@@ -1,4 +1,4 @@
-package me.dextras.dextras;
+package me.dextras.dextras.core;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;

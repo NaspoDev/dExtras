@@ -1,4 +1,8 @@
-package me.dextras.dextras;
+/*
+Tab completer for DExtrasCmds
+*/
+
+package me.dextras.dextras.core;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

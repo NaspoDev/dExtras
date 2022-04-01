@@ -1,5 +1,7 @@
-package me.dextras.dextras;
+package me.dextras.dextras.core;
 
+import me.dextras.dextras.features.FirstJoin;
+import me.dextras.dextras.features.TPRandom;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;

@@ -1,5 +1,6 @@
-package me.dextras.dextras;
+package me.dextras.dextras.features;
 
+import me.dextras.dextras.core.DExtras;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -19,7 +20,7 @@ It's intended usage is for When the server has a high player count.
 public class TPRandom implements CommandExecutor {
 
     DExtras plugin;
-    TPRandom(DExtras plugin) {
+    public TPRandom(DExtras plugin) {
         this.plugin = plugin;
     }
 

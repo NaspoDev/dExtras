@@ -1,7 +1,8 @@
-package me.dextras.dextras;
+package me.dextras.dextras.features;
 
 import com.earth2me.essentials.Essentials;
 import me.SuperRonanCraft.BetterRTP.references.customEvents.RTP_TeleportPostEvent;
+import me.dextras.dextras.core.DExtras;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -19,7 +20,7 @@ if they die off the bat, didn't set a home, and can't rtp again.
 public class FirstJoin implements Listener {
 
     DExtras plugin;
-    FirstJoin(DExtras plugin) {
+    public FirstJoin(DExtras plugin) {
         this.plugin = plugin;
     }
 
