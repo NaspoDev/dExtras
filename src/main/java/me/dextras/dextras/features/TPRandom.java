@@ -19,12 +19,13 @@ It's intended usage is for When the server has a high player count.
 */
 public class TPRandom implements CommandExecutor {
 
+    String prefix;
+
     DExtras plugin;
     public TPRandom(DExtras plugin) {
         this.plugin = plugin;
+        prefix = plugin.getConfig().getString("messages.general.prefix");
     }
-
-    String prefix = plugin.getConfig().getString("messages.general.prefix");
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

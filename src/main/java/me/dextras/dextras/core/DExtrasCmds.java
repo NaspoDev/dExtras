@@ -10,13 +10,15 @@ import java.util.Objects;
 
 public class DExtrasCmds implements CommandExecutor {
 
-    DExtras plugin;
+    String prefix;
 
+    DExtras plugin;
     DExtrasCmds(DExtras plugin) {
         this.plugin = plugin;
+        prefix = plugin.getConfig().getString("messages.general.prefix");
     }
 
-    String prefix = plugin.getConfig().getString("messages.general.prefix");
+
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
