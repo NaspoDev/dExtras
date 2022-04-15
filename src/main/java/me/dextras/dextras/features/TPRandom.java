@@ -1,5 +1,6 @@
 package me.dextras.dextras.features;
 
+import me.dextras.dextras.core.Constants;
 import me.dextras.dextras.core.DExtras;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -13,18 +14,15 @@ import java.util.Objects;
 import java.util.Random;
 
 /*
-This class' feature:
+TPRandom:
 Creates the /tpr command. Moderators can use this command to teleport to a random player on the server upon each use.
 It's intended usage is for When the server has a high player count.
 */
 public class TPRandom implements CommandExecutor {
 
-    String prefix;
-
     DExtras plugin;
     public TPRandom(DExtras plugin) {
         this.plugin = plugin;
-        prefix = plugin.getConfig().getString("messages.general.prefix");
     }
 
     @Override
@@ -36,13 +34,12 @@ public class TPRandom implements CommandExecutor {
             }
             Player player = (Player) sender;
             if (!(player.hasPermission("dextras.tpr"))) {
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull
-                        (plugin.getConfig().getString("messages.general.no-permission"))));
+                player.sendMessage(Constants.chatColor(plugin.getConfig().getString("messages.general.no-permission")));
                 return true;
             }
 
             if (plugin.getServer().getOnlinePlayers().size() == 1) {
-                player.sendMessage(prefix + "&7You're the only player online!");
+                player.sendMessage(Constants.prefix + "&7You're the only player online!");
                 return true;
             }
 
@@ -59,8 +56,8 @@ public class TPRandom implements CommandExecutor {
                 }
             } while (loop);
 
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
-                    "&7Teleporting to " + selected.getDisplayName() + "&7."));
+            player.sendMessage(Constants.chatColor(Constants.prefix + "&7Teleporting to " +
+                    selected.getDisplayName() + "&7."));
             player.teleport(selected.getLocation());
         }
 

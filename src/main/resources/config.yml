@@ -1,23 +1,23 @@
 #DeltaRealms dExtras plugin is a quality of life plugin for DeltaRealms. It irons out kinks in other plugins that
 #the server uses, and implements other qol features.
 
-#Permissions:
-# - dextras.use > Permissions to everything/every command in the plugin.
-
-#Commands:
-# - /dextras reload > Reloads the configuration.
+#Do not touch!
+config-version: 2
 
 #Gives "betterrtp.bypass.cooldown" for 10 minutes to new players so that they won't quit the server
 #if they die off the bat, didn't set a home, and can't rtp again.
+#(Requires server restart upon change).
 FirstJoin: true
 
-#to be added
-PCTeamFix: false
+#Sends a hoverable clickable message to a new player after 3 minutes of playtime. Upon clicking, the message
+#will open a GUI for the user where the user can select where they discovered DeltaRealms.
+#(Requires server restart upon change).
+DiscoveryGUI: true
 
 messages:
   general:
-    prefix: "&8[&6!&8] &r"
-    reload: "&7dExtras has been reloaded."
+    prefix: "&8[&6&ldExtras&8] &r"
+    reload: "&7All configurations reloaded."
     no-permission: "&cYou do not have permission."
   first-join:
     home-reminder: "&eRemember to set a home! &6/sethome <home>"

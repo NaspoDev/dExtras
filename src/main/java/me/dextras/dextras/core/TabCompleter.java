@@ -11,13 +11,18 @@ import java.util.List;
 
 public class TabCompleter implements org.bukkit.command.TabCompleter {
 
-    List<String> arguments = new ArrayList<String>();
-
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-        if (arguments.isEmpty()) {
-            arguments.add("reload");
+
+        if(label.equalsIgnoreCase("dextras")) {
+            if (!(sender.hasPermission("dextras.use"))) {
+                return null;
+            }
         }
+
+        List<String> arguments = new ArrayList<String>();
+
+        arguments.add("reload");
 
         List<String> result = new ArrayList<String>();
         if (args.length == 1) {
