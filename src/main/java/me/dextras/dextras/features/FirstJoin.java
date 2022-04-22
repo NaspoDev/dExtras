@@ -2,16 +2,13 @@ package me.dextras.dextras.features;
 
 import com.earth2me.essentials.Essentials;
 import me.SuperRonanCraft.BetterRTP.references.customEvents.RTP_TeleportPostEvent;
-import me.dextras.dextras.core.Constants;
+import me.dextras.dextras.core.Utils;
 import me.dextras.dextras.core.DExtras;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-
-import java.util.Objects;
 
 /*
 FirstJoin:
@@ -43,7 +40,7 @@ public class FirstJoin implements Listener {
 
         int homes = ess.getUser(player).getHomes().size();
         if (homes == 0) {
-            player.sendMessage(Constants.chatColor(plugin.getConfig().getString("messages.first-join.home-reminder")));
+            player.sendMessage(Utils.chatColor(plugin.getConfig().getString("messages.first-join.home-reminder")));
         }
     }
 }

@@ -18,21 +18,21 @@ public class DExtrasCmds implements CommandExecutor {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
                 if (!(player.hasPermission("dextras.use"))) {
-                    player.sendMessage(Constants.chatColor(plugin.getConfig().getString("messages.general.no-permission")));
+                    player.sendMessage(Utils.chatColor(plugin.getConfig().getString("messages.general.no-permission")));
                     return true;
                 }
                 if (args.length == 0) {
-                    player.sendMessage(Constants.chatColor(Constants.prefix +
+                    player.sendMessage(Utils.chatColor(Utils.prefix +
                     "&7Did you mean " + "&6/dextras reload " + "&7?"));
                     return true;
                 }
                 if (args[0].equalsIgnoreCase("reload")) {
-                    Constants.reloadConfigs();
-                    player.sendMessage(Constants.chatColor(Constants.prefix +
+                    Utils.reloadConfigs();
+                    player.sendMessage(Utils.chatColor(Utils.prefix +
                             plugin.getConfig().getString("messages.general.reload")));
                     return true;
                 }
-                player.sendMessage(Constants.chatColor(Constants.prefix +
+                player.sendMessage(Utils.chatColor(Utils.prefix +
                         "&7Did you mean &6/dextras reload&7?"));
                 return true;
             }
@@ -41,7 +41,7 @@ public class DExtrasCmds implements CommandExecutor {
                 return true;
             }
             if (args[0].equalsIgnoreCase("reload")) {
-                Constants.reloadConfigs();
+                Utils.reloadConfigs();
                 sender.sendMessage("All configurations reloaded.");
                 return true;
             }

@@ -1,8 +1,7 @@
 package me.dextras.dextras.features;
 
-import me.dextras.dextras.core.Constants;
+import me.dextras.dextras.core.Utils;
 import me.dextras.dextras.core.DExtras;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -10,7 +9,6 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 
 /*
@@ -34,12 +32,12 @@ public class TPRandom implements CommandExecutor {
             }
             Player player = (Player) sender;
             if (!(player.hasPermission("dextras.tpr"))) {
-                player.sendMessage(Constants.chatColor(plugin.getConfig().getString("messages.general.no-permission")));
+                player.sendMessage(Utils.chatColor(plugin.getConfig().getString("messages.general.no-permission")));
                 return true;
             }
 
             if (plugin.getServer().getOnlinePlayers().size() == 1) {
-                player.sendMessage(Constants.prefix + "&7You're the only player online!");
+                player.sendMessage(Utils.prefix + "&7You're the only player online!");
                 return true;
             }
 
@@ -56,7 +54,7 @@ public class TPRandom implements CommandExecutor {
                 }
             } while (loop);
 
-            player.sendMessage(Constants.chatColor(Constants.prefix + "&7Teleporting to " +
+            player.sendMessage(Utils.chatColor(Utils.prefix + "&7Teleporting to " +
                     selected.getDisplayName() + "&7."));
             player.teleport(selected.getLocation());
         }

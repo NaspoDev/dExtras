@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -47,6 +48,7 @@ public class DiscoveryGUIInv {
 
         //youtube
         item.setType(Material.MUSIC_DISC_PIGSTEP);
+        meta.addItemFlags(ItemFlag.values());
         meta.setDisplayName(ChatColor.RED + "You" + ChatColor.WHITE + "Tube");
         item.setItemMeta(meta);
         inv.setItem(3, item);

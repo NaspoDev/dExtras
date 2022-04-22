@@ -1,7 +1,6 @@
 package me.dextras.dextras.core;
 
 import me.dextras.dextras.features.FirstJoin;
-import me.dextras.dextras.features.GravesFix;
 import me.dextras.dextras.features.TPRandom;
 import me.dextras.dextras.features.discoverygui.DiscoveryGUI;
 import me.dextras.dextras.features.discoverygui.DiscoveryGUICmd;
@@ -13,18 +12,18 @@ import java.util.Objects;
 
 public final class DExtras extends JavaPlugin {
     //core
-    Constants constants = new Constants(this);
-    FirstJoin firstJoin = new FirstJoin(this);
-    DExtrasCmds dExtrasCmds = new DExtrasCmds(this);
-    TabCompleter tabCompleter = new TabCompleter();
+    private Utils utils;
+    private DExtrasCmds dExtrasCmds;
+    private TabCompleter tabCompleter;
 
     //features
-    TPRandom tpRandom = new TPRandom(this);
+    private FirstJoin firstJoin;
+    private TPRandom tpRandom;
 
-    DiscoveryGUI discoveryGUI = new DiscoveryGUI(this);
-    DiscoveryGUIInv discoveryGUIInv = new DiscoveryGUIInv();
-    DiscoveryGUICmd discoveryGUICmd = new DiscoveryGUICmd();
-    DiscoveryGUIData discoveryGUIData = new DiscoveryGUIData(this);
+    private DiscoveryGUI discoveryGUI;
+    private DiscoveryGUIInv discoveryGUIInv;
+    private DiscoveryGUICmd discoveryGUICmd;
+    private DiscoveryGUIData discoveryGUIData;
 
     //GravesFix gravesFix = new GravesFix();
 
@@ -32,6 +31,8 @@ public final class DExtras extends JavaPlugin {
     public void onEnable() {
         this.saveDefaultConfig();
         this.getLogger().info("dExtras has been enabled!");
+
+        instantiateClasses();
 
         //DExtrasCmds
         Objects.requireNonNull(this.getCommand("dextras")).setExecutor(dExtrasCmds);
@@ -61,5 +62,23 @@ public final class DExtras extends JavaPlugin {
     @Override
     public void onDisable() {
         this.getLogger().info("dExtras has been disabled!");
+    }
+
+    private void instantiateClasses() {
+        //core
+        utils = new Utils(this);
+        dExtrasCmds = new DExtrasCmds(this);
+        tabCompleter = new TabCompleter();
+
+        //features
+        firstJoin = new FirstJoin(this);
+        tpRandom = new TPRandom(this);
+
+        discoveryGUI = new DiscoveryGUI(this);
+        discoveryGUIInv = new DiscoveryGUIInv();
+        discoveryGUICmd = new DiscoveryGUICmd();
+        discoveryGUIData = new DiscoveryGUIData(this);
+
+        //gravesFix = new GravesFix();
     }
 }

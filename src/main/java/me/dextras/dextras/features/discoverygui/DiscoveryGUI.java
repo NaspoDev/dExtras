@@ -1,6 +1,6 @@
 package me.dextras.dextras.features.discoverygui;
 
-import me.dextras.dextras.core.Constants;
+import me.dextras.dextras.core.Utils;
 import me.dextras.dextras.core.DExtras;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -58,7 +58,13 @@ public class DiscoveryGUI implements Listener {
         event.setCancelled(true);
         Player player = (Player) event.getWhoClicked();
 
-        int amount = 0;
+        if (player.hasPermission("dextras.discoverygui")) {
+            player.closeInventory();
+            player.sendMessage(Utils.chatColor(Utils.prefix + "&7No response was recorded. GUI was opened " +
+                    "in admin mode."));
+            return;
+        }
+
         switch (event.getSlot()) {
             case 0 -> DiscoveryGUIData.getConfig().set("vote-sites",
                     (DiscoveryGUIData.getConfig().getInt("vote-sites") + 1));
@@ -80,6 +86,6 @@ public class DiscoveryGUI implements Listener {
         DiscoveryGUIData.saveConfig();
         player.closeInventory();
         DiscoveryGUICmd.hasUsed.add(player);
-        player.sendMessage(Constants.chatColor("&eResponse recorded, thank you!"));
+        player.sendMessage(Utils.chatColor("&eResponse recorded, thank you!"));
     }
 }

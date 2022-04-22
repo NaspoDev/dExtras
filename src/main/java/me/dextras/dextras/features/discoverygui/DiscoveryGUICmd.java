@@ -1,6 +1,6 @@
 package me.dextras.dextras.features.discoverygui;
 
-import me.dextras.dextras.core.Constants;
+import me.dextras.dextras.core.Utils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -20,8 +20,12 @@ public class DiscoveryGUICmd implements CommandExecutor {
                 return true;
             }
             Player player = (Player) sender;
+            if (player.hasPermission("dextras.discoverygui")) {
+                player.openInventory(DiscoveryGUIInv.inv);
+                return true;
+            }
             if (hasUsed.contains(player)) {
-                player.sendMessage(Constants.chatColor("&cYou've already submitted your response."));
+                player.sendMessage(Utils.chatColor("&cYou've already submitted your response."));
                 return true;
             }
             if (!(player.hasPlayedBefore())) {
