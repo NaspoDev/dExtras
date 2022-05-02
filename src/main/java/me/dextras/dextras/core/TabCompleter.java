@@ -14,7 +14,7 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
 
-        if(label.equalsIgnoreCase("dextras")) {
+        if (label.equalsIgnoreCase("dextras")) {
             if (!(sender.hasPermission("dextras.use"))) {
                 return null;
             }

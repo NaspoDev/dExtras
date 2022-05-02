@@ -5,7 +5,6 @@ import org.bukkit.ChatColor;
 
 public class Utils {
     private static DExtras plugin;
-
     public static String prefix;
 
     Utils(DExtras plugin) {
