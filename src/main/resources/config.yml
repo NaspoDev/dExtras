@@ -1,21 +1,22 @@
 #DeltaRealms dExtras plugin is a quality of life plugin for DeltaRealms. It implements various small features,
 #irons out kinks in other plugins, and implements other qol features.
 
-#Do not touch!
-config-version: 3
-
 #Gives "betterrtp.bypass.cooldown" for 10 minutes to new players so that they won't quit the server
 #if they die off the bat, didn't set a home, and can't rtp again.
 #(Requires server restart upon change).
 FirstJoin: true
 
-#Sends a hoverable clickable message to a new player after 3 minutes of playtime. Upon clicking, the message
-#will open a GUI for the user where the user can select where they discovered DeltaRealms.
-#(Requires server restart upon change).
-DiscoveryGUI: true
-
 #Plays a firework sounds to Naspo when a new player joins the server.
 NewPlayerPingNaspo: true
+
+#Tracks new join analytics from various subdomains.
+DiscoveryAnalytics:
+  started-tracking: "dd/mm/yyyy"
+  sub-domains:
+    #Add as many subdomains as you wish, then reload the plugin.
+    play: 0
+    example: 0
+
 
 messages:
   general:

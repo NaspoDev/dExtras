@@ -1,4 +1,4 @@
-package me.dextras.dextras.features;
+package me.dextras.dextras.features.newplayerpingnaspo;
 
 import me.dextras.dextras.core.DExtras;
 import org.bukkit.Bukkit;

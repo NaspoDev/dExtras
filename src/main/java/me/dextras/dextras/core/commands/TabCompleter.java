@@ -2,29 +2,37 @@
 Tab completer for DExtrasCmds
 */
 
-package me.dextras.dextras.core;
+package me.dextras.dextras.core.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
 import java.util.ArrayList;
 import java.util.List;
 
+//Tab completer for every command.
 public class TabCompleter implements org.bukkit.command.TabCompleter {
+
+
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-
-        if (label.equalsIgnoreCase("dextras")) {
-            if (!(sender.hasPermission("dextras.use"))) {
-                return null;
-            }
+        //Permission check. (Seeing if they have any dextras perm).
+        if (!(Commands.hasAnyPermission((Player) sender))) {
+            return null;
         }
 
-        List<String> arguments = new ArrayList<String>();
+        //Add args to list.
+        List<String> arguments = new ArrayList<>();
 
         arguments.add("reload");
+        arguments.add("help");
+        arguments.add("tpr");
+        arguments.add("discovery-analytics");
 
-        List<String> result = new ArrayList<String>();
+        //Autocomplete logic.
+        List<String> result = new ArrayList<>();
         if (args.length == 1) {
             for (String s : arguments) {
                 if (s.toLowerCase().startsWith(args[0].toLowerCase())) {

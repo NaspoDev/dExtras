@@ -10,4 +10,3 @@ softdepend: [Essentials, BetterRTP]
 commands:
   dextras:
   tpr:
-  discoverygui:

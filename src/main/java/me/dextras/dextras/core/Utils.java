@@ -1,6 +1,5 @@
 package me.dextras.dextras.core;
 
-import me.dextras.dextras.features.discoverygui.DiscoveryGUIData;
 import org.bukkit.ChatColor;
 
 public class Utils {
@@ -15,7 +14,6 @@ public class Utils {
 
     public static void reloadConfigs() {
         plugin.reloadConfig();
-        DiscoveryGUIData.reloadConfig();
 
         reloadVars();
     }
@@ -27,5 +25,4 @@ public class Utils {
     public static String chatColor(String text) {
         return ChatColor.translateAlternateColorCodes('&', text);
     }
-
 }

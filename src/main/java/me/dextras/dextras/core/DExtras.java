@@ -1,12 +1,13 @@
 package me.dextras.dextras.core;
 
-import me.dextras.dextras.features.FirstJoin;
-import me.dextras.dextras.features.NewPlayerPingNaspo;
-import me.dextras.dextras.features.TPRandom;
-import me.dextras.dextras.features.discoverygui.DiscoveryGUI;
-import me.dextras.dextras.features.discoverygui.DiscoveryGUICmd;
-import me.dextras.dextras.features.discoverygui.DiscoveryGUIData;
-import me.dextras.dextras.features.discoverygui.DiscoveryGUIInv;
+import me.dextras.dextras.core.commands.CoreCommandLogic;
+import me.dextras.dextras.core.commands.Commands;
+import me.dextras.dextras.core.commands.TabCompleter;
+import me.dextras.dextras.features.discoveryanalytics.DiscoveryAnalyticsCmd;
+import me.dextras.dextras.features.firstjoin.FirstJoin;
+import me.dextras.dextras.features.discoveryanalytics.DiscoveryAnalytics;
+import me.dextras.dextras.features.newplayerpingnaspo.NewPlayerPingNaspo;
+import me.dextras.dextras.features.tprandom.TPRandom;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
@@ -14,21 +15,18 @@ import java.util.logging.Level;
 public final class DExtras extends JavaPlugin {
     //core
     private Utils utils;
-    private DExtrasCmds dExtrasCmds;
+    private Commands commands;
     private TabCompleter tabCompleter;
+    private CoreCommandLogic coreCommandLogic;
 
     //features
     private FirstJoin firstJoin;
     private TPRandom tpRandom;
-
-    private DiscoveryGUI discoveryGUI;
-    private DiscoveryGUIInv discoveryGUIInv;
-    private DiscoveryGUICmd discoveryGUICmd;
-    private DiscoveryGUIData discoveryGUIData;
-
     private NewPlayerPingNaspo newPlayerPingNaspo;
 
-    //private GravesFix gravesFix;
+    private DiscoveryAnalytics discoveryAnalytics;
+    private DiscoveryAnalyticsCmd discoveryAnalyticsCmd;
+
 
     @Override
     public void onEnable() {
@@ -39,10 +37,6 @@ public final class DExtras extends JavaPlugin {
         instantiateClasses();
         registerEvents();
         registerCommands();
-
-
-        //GravesFix
-        //this.getServer().getPluginManager().registerEvents(gravesFix, this);
     }
 
     @Override
@@ -69,47 +63,41 @@ public final class DExtras extends JavaPlugin {
     private void instantiateClasses() {
         //core
         utils = new Utils(this);
-        dExtrasCmds = new DExtrasCmds(this);
+        //commands initiated below to receive instances of many classes.
         tabCompleter = new TabCompleter();
+        coreCommandLogic = new CoreCommandLogic(this);
 
         //features
         firstJoin = new FirstJoin(this);
         tpRandom = new TPRandom(this);
-
-        discoveryGUI = new DiscoveryGUI(this);
-        discoveryGUIInv = new DiscoveryGUIInv();
-        discoveryGUICmd = new DiscoveryGUICmd();
-        discoveryGUIData = new DiscoveryGUIData(this);
-
         newPlayerPingNaspo = new NewPlayerPingNaspo(this);
-        //gravesFix = new GravesFix();
+
+        discoveryAnalytics = new DiscoveryAnalytics(this);
+        discoveryAnalyticsCmd = new DiscoveryAnalyticsCmd(this);
+
+        //commands
+        commands = new Commands(this, coreCommandLogic, tpRandom, discoveryAnalyticsCmd);
     }
 
-    // --- Constants to register ---
+    // --- Constants to Register ---
 
     private void registerEvents() {
         //FirstJoin
         if (this.getConfig().getBoolean("FirstJoin")) {
             this.getServer().getPluginManager().registerEvents(firstJoin, this);
         }
-        //DiscoveryGUI
-        if (this.getConfig().getBoolean("DiscoveryGUI")) {
-            this.getServer().getPluginManager().registerEvents(discoveryGUI, this);
-        }
         //NewPlayerPingNaspo
         this.getServer().getPluginManager().registerEvents(newPlayerPingNaspo, this);
+        //DiscoveryAnalytics
+        this.getServer().getPluginManager().registerEvents(discoveryAnalytics, this);
     }
 
     private void registerCommands() {
-        //DExtrasCmds
-        this.getCommand("dextras").setExecutor(dExtrasCmds);
-        //TPRandom
-        this.getCommand("tpr").setExecutor(tpRandom);
+        //CoreCommands
+        this.getCommand("dextras").setExecutor(commands);
         //TabCompleter
         this.getCommand("dextras").setTabCompleter(tabCompleter);
-        //DiscoveryGUI
-        if (this.getConfig().getBoolean("DiscoveryGUI")) {
-            this.getCommand("discoverygui").setExecutor(discoveryGUICmd);
-        }
+        //TPRandom (for alias)
+        this.getCommand("tpr").setExecutor(tpRandom);
     }
 }

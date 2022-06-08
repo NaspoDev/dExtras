@@ -1,4 +1,4 @@
-package me.dextras.dextras.features;
+package me.dextras.dextras.features.firstjoin;
 
 import com.earth2me.essentials.Essentials;
 import me.SuperRonanCraft.BetterRTP.references.customEvents.RTP_TeleportPostEvent;
@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerLoginEvent;
 
 /*
 FirstJoin:
