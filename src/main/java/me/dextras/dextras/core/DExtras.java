@@ -93,6 +93,8 @@ public final class DExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(newPlayerPingNaspo, this);
         //DiscoveryAnalytics
         this.getServer().getPluginManager().registerEvents(discoveryAnalytics, this);
+        //HuskDrops
+        this.getServer().getPluginManager().registerEvents(huskDrops, this);
     }
 
     private void registerCommands() {
