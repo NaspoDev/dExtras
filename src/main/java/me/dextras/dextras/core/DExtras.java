@@ -6,6 +6,7 @@ import me.dextras.dextras.core.commands.TabCompleter;
 import me.dextras.dextras.features.discoveryanalytics.DiscoveryAnalyticsCmd;
 import me.dextras.dextras.features.firstjoin.FirstJoin;
 import me.dextras.dextras.features.discoveryanalytics.DiscoveryAnalytics;
+import me.dextras.dextras.features.huskdrops.HuskDrops;
 import me.dextras.dextras.features.newplayerpingnaspo.NewPlayerPingNaspo;
 import me.dextras.dextras.features.tprandom.TPRandom;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -23,6 +24,7 @@ public final class DExtras extends JavaPlugin {
     private FirstJoin firstJoin;
     private TPRandom tpRandom;
     private NewPlayerPingNaspo newPlayerPingNaspo;
+    private HuskDrops huskDrops;
 
     private DiscoveryAnalytics discoveryAnalytics;
     private DiscoveryAnalyticsCmd discoveryAnalyticsCmd;
@@ -71,6 +73,7 @@ public final class DExtras extends JavaPlugin {
         firstJoin = new FirstJoin(this);
         tpRandom = new TPRandom(this);
         newPlayerPingNaspo = new NewPlayerPingNaspo(this);
+        huskDrops = new HuskDrops();
 
         discoveryAnalytics = new DiscoveryAnalytics(this);
         discoveryAnalyticsCmd = new DiscoveryAnalyticsCmd(this);
