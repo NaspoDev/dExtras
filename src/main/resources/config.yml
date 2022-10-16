@@ -17,6 +17,11 @@ DiscoveryAnalytics:
     play: 0
     example: 0
 
+#Prompts players to download the server texture pack.
+pack-prompt:
+  enabled: true
+  #Compatible with Dropbox
+  pack-url: "https://www.dropbox.com/s/cm00g4zf535omhg/server_pack.zip?dl=1"
 
 messages:
   general:
