@@ -21,11 +21,13 @@ public class PackPrompt implements Listener {
     private void joinEvent(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        try {
-            player.setResourcePack(plugin.getConfig().getString("pack-prompt.pack-url"),
-                    null, plugin.getServer().getResourcePackPrompt());
-        } catch (Exception e) {
-            plugin.getLogger().log(Level.WARNING, "Could not load resource pack!");
+        if (plugin.getConfig().getBoolean("pack-prompt.enabled")) {
+            try {
+                player.setResourcePack(plugin.getConfig().getString("pack-prompt.pack-url"),
+                        null, plugin.getServer().getResourcePackPrompt());
+            } catch (Exception e) {
+                plugin.getLogger().log(Level.WARNING, "Could not load resource pack!");
+            }
         }
     }
 }
