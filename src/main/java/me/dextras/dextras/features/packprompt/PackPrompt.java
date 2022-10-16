@@ -21,6 +21,7 @@ public class PackPrompt implements Listener {
     private void joinEvent(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
+        // If pack prompt is enabled, send the download prompt.
         if (plugin.getConfig().getBoolean("pack-prompt.enabled")) {
             try {
                 player.setResourcePack(plugin.getConfig().getString("pack-prompt.pack-url"),
