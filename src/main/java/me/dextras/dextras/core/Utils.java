@@ -1,6 +1,5 @@
 package me.dextras.dextras.core;
 
-import jdk.jshell.execution.Util;
 import org.bukkit.ChatColor;
 
 import java.text.DecimalFormat;
@@ -27,6 +26,7 @@ public class Utils {
         reloadVars();
     }
 
+    // Reloads any variables in the plugin that get their values from values in the config.
     private static void reloadVars() {
         prefix = plugin.getConfig().getString("messages.general.prefix");
     }

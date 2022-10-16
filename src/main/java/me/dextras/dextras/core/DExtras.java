@@ -8,6 +8,7 @@ import me.dextras.dextras.features.firstjoin.FirstJoin;
 import me.dextras.dextras.features.discoveryanalytics.DiscoveryAnalytics;
 import me.dextras.dextras.features.huskdrops.HuskDrops;
 import me.dextras.dextras.features.newplayerpingnaspo.NewPlayerPingNaspo;
+import me.dextras.dextras.features.packprompt.PackPrompt;
 import me.dextras.dextras.features.tprandom.TPRandom;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -25,6 +26,7 @@ public final class DExtras extends JavaPlugin {
     private TPRandom tpRandom;
     private NewPlayerPingNaspo newPlayerPingNaspo;
     private HuskDrops huskDrops;
+    private PackPrompt packPrompt;
 
     private DiscoveryAnalytics discoveryAnalytics;
     private DiscoveryAnalyticsCmd discoveryAnalyticsCmd;
@@ -33,6 +35,8 @@ public final class DExtras extends JavaPlugin {
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
+        this.getConfig().options().copyDefaults(true);
+        this.saveConfig();
         this.getLogger().info("dExtras has been enabled!");
 
         softDependencyCheck();
@@ -74,6 +78,7 @@ public final class DExtras extends JavaPlugin {
         tpRandom = new TPRandom(this);
         newPlayerPingNaspo = new NewPlayerPingNaspo(this);
         huskDrops = new HuskDrops();
+        packPrompt = new PackPrompt(this);
 
         discoveryAnalytics = new DiscoveryAnalytics(this);
         discoveryAnalyticsCmd = new DiscoveryAnalyticsCmd(this);
@@ -95,6 +100,8 @@ public final class DExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(discoveryAnalytics, this);
         //HuskDrops
         this.getServer().getPluginManager().registerEvents(huskDrops, this);
+        //PackPrompt
+        this.getServer().getPluginManager().registerEvents(packPrompt, this);
     }
 
     private void registerCommands() {
