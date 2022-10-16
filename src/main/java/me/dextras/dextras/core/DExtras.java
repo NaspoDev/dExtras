@@ -35,6 +35,8 @@ public final class DExtras extends JavaPlugin {
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
+        this.getConfig().options().copyDefaults(true);
+        this.saveConfig();
         this.getLogger().info("dExtras has been enabled!");
 
         softDependencyCheck();
