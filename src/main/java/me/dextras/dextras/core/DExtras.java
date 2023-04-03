@@ -29,9 +29,7 @@ public final class DExtras extends JavaPlugin {
     private NewPlayerPingNaspo newPlayerPingNaspo;
     private HuskDrops huskDrops;
     private PackPrompt packPrompt;
-
     private RestoreClaimBlocks restoreClaimBlocks;
-    private RestoreClaimBlocksCmd restoreClaimBlocksCmd;
 
     private DiscoveryAnalytics discoveryAnalytics;
     private DiscoveryAnalyticsCmd discoveryAnalyticsCmd;
@@ -84,9 +82,7 @@ public final class DExtras extends JavaPlugin {
         newPlayerPingNaspo = new NewPlayerPingNaspo(this);
         huskDrops = new HuskDrops();
         packPrompt = new PackPrompt(this);
-
         restoreClaimBlocks = new RestoreClaimBlocks();
-        restoreClaimBlocksCmd = new RestoreClaimBlocksCmd();
 
         discoveryAnalytics = new DiscoveryAnalytics(this);
         discoveryAnalyticsCmd = new DiscoveryAnalyticsCmd(this);
