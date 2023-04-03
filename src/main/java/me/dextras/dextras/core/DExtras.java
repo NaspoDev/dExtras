@@ -9,6 +9,8 @@ import me.dextras.dextras.features.discoveryanalytics.DiscoveryAnalytics;
 import me.dextras.dextras.features.huskdrops.HuskDrops;
 import me.dextras.dextras.features.newplayerpingnaspo.NewPlayerPingNaspo;
 import me.dextras.dextras.features.packprompt.PackPrompt;
+import me.dextras.dextras.features.restoreclaimblocks.RestoreClaimBlocks;
+import me.dextras.dextras.features.restoreclaimblocks.RestoreClaimBlocksCmd;
 import me.dextras.dextras.features.tprandom.TPRandom;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -27,6 +29,9 @@ public final class DExtras extends JavaPlugin {
     private NewPlayerPingNaspo newPlayerPingNaspo;
     private HuskDrops huskDrops;
     private PackPrompt packPrompt;
+
+    private RestoreClaimBlocks restoreClaimBlocks;
+    private RestoreClaimBlocksCmd restoreClaimBlocksCmd;
 
     private DiscoveryAnalytics discoveryAnalytics;
     private DiscoveryAnalyticsCmd discoveryAnalyticsCmd;
@@ -79,6 +84,9 @@ public final class DExtras extends JavaPlugin {
         newPlayerPingNaspo = new NewPlayerPingNaspo(this);
         huskDrops = new HuskDrops();
         packPrompt = new PackPrompt(this);
+
+        restoreClaimBlocks = new RestoreClaimBlocks();
+        restoreClaimBlocksCmd = new RestoreClaimBlocksCmd();
 
         discoveryAnalytics = new DiscoveryAnalytics(this);
         discoveryAnalyticsCmd = new DiscoveryAnalyticsCmd(this);
