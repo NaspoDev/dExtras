@@ -10,7 +10,6 @@ import me.dextras.dextras.features.huskdrops.HuskDrops;
 import me.dextras.dextras.features.newplayerpingnaspo.NewPlayerPingNaspo;
 import me.dextras.dextras.features.packprompt.PackPrompt;
 import me.dextras.dextras.features.restoreclaimblocks.RestoreClaimBlocks;
-import me.dextras.dextras.features.restoreclaimblocks.RestoreClaimBlocksCmd;
 import me.dextras.dextras.features.tprandom.TPRandom;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -54,10 +53,10 @@ public final class DExtras extends JavaPlugin {
     }
 
     private void softDependencyCheck() {
-        //FirstJoin
+        // FirstJoin (Checks Essentials and BetterRTP)
         if (this.getConfig().getBoolean("FirstJoin")) {
             if (this.getServer().getPluginManager().getPlugin("Essentials") == null) {
-                this.getLogger().log(Level.WARNING, "Essentials plugin could not be location which is a " +
+                this.getLogger().log(Level.WARNING, "Essentials plugin could not be located which is a " +
                         "soft-dependency of this plugin. " +
                         "The FirstJoin feature will not be fully functional without it!");
             }
@@ -66,6 +65,13 @@ public final class DExtras extends JavaPlugin {
                         "soft-dependency of this plugin. " +
                         "The FirstJoin feature will not be fully functional without it!");
             }
+        }
+
+        // Restore Claimblocks (Checks LuckPerms)
+        if (this.getServer().getPluginManager().getPlugin("LuckPerms") == null) {
+            this.getLogger().log(Level.WARNING, "LuckPerms plugin could not be located which is a " +
+                    "soft-dependency of this plugin. " +
+                    "The Restore Claimblocks feature will not be functional without it!");
         }
     }
 
