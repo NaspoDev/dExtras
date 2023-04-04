@@ -66,13 +66,6 @@ public final class DExtras extends JavaPlugin {
                         "The FirstJoin feature will not be fully functional without it!");
             }
         }
-
-        // Restore Claimblocks (Checks LuckPerms)
-        if (this.getServer().getPluginManager().getPlugin("LuckPerms") == null) {
-            this.getLogger().log(Level.WARNING, "LuckPerms plugin could not be located which is a " +
-                    "soft-dependency of this plugin. " +
-                    "The Restore Claimblocks feature will not be functional without it!");
-        }
     }
 
     private void instantiateClasses() {
@@ -88,7 +81,7 @@ public final class DExtras extends JavaPlugin {
         newPlayerPingNaspo = new NewPlayerPingNaspo(this);
         huskDrops = new HuskDrops();
         packPrompt = new PackPrompt(this);
-        restoreClaimBlocks = new RestoreClaimBlocks();
+        restoreClaimBlocks = new RestoreClaimBlocks(this);
 
         discoveryAnalytics = new DiscoveryAnalytics(this);
         discoveryAnalyticsCmd = new DiscoveryAnalyticsCmd(this);
