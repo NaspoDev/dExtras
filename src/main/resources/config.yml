@@ -24,6 +24,9 @@ pack-prompt:
   #Compatible with Dropbox
   pack-url: ""
 
+# Automatically restores the claim blocks of ranked players on first join (upon season turnover).
+restore-claim-blocks: true
+
 messages:
   general:
     prefix: "&8[&6&ldExtras&8] &r"

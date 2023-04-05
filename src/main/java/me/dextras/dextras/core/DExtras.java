@@ -67,10 +67,12 @@ public final class DExtras extends JavaPlugin {
         }
 
         // RestoreClaimBlocks (Checks GriefPrevention)
-        if (this.getServer().getPluginManager().getPlugin("GriefPrevention") == null) {
-            this.getLogger().log(Level.WARNING, "GriefPrevention plugin could not be located which is a " +
-                    "soft-dependency of this plugin. " +
-                    "This RestoreClaimBlocks feature will not work without it!");
+        if (this.getConfig().getBoolean("restore-claim-blocks")) {
+            if (this.getServer().getPluginManager().getPlugin("GriefPrevention") == null) {
+                this.getLogger().log(Level.WARNING, "GriefPrevention plugin could not be located which is a " +
+                        "soft-dependency of this plugin. " +
+                        "This RestoreClaimBlocks feature will not work without it!");
+            }
         }
     }
 
