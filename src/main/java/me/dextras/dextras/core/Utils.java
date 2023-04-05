@@ -20,6 +20,7 @@ public class Utils {
         reloadVars();
     }
 
+    // Reloads the configuration and calls to reload global plugin variables that depend on an updated config.
     public static void reloadConfigs() {
         plugin.reloadConfig();
 
