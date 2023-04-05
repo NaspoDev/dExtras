@@ -76,10 +76,11 @@ public class RestoreClaimBlocks implements Listener {
         // Send console command to restore the claim blocks.
         plugin.getServer().dispatchCommand(
                 plugin.getServer().getConsoleSender(),
-                "acb " + player.getName());
+                "acb " + player.getName() + " " + claimBlocks);
 
         // Send a message and play a sound to notify player that claim blocks have been restored.
-        player.sendMessage(Utils.chatColor("&a" + claimBlocks + "&aclaim blocks for your rank have been restored."));
+        player.sendMessage(Utils.chatColor("&a" + claimBlocks + " &aclaim blocks for your rank have " +
+                "been restored."));
         player.playSound(player.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_CHIME, 0.5f, 1.0f);
     }
 
