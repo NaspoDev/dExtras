@@ -93,18 +93,20 @@ public final class DExtras extends JavaPlugin {
     // --- Constants to Register ---
 
     private void registerEvents() {
-        //FirstJoin
+        // FirstJoin
         if (this.getConfig().getBoolean("FirstJoin")) {
             this.getServer().getPluginManager().registerEvents(firstJoin, this);
         }
-        //NewPlayerPingNaspo
+        // NewPlayerPingNaspo
         this.getServer().getPluginManager().registerEvents(newPlayerPingNaspo, this);
-        //DiscoveryAnalytics
+        // DiscoveryAnalytics
         this.getServer().getPluginManager().registerEvents(discoveryAnalytics, this);
-        //HuskDrops
+        // HuskDrops
         this.getServer().getPluginManager().registerEvents(huskDrops, this);
-        //PackPrompt
+        // PackPrompt
         this.getServer().getPluginManager().registerEvents(packPrompt, this);
+        // RestoreClaimBlocks
+        this.getServer().getPluginManager().registerEvents(restoreClaimBlocks, this);
     }
 
     private void registerCommands() {
