@@ -16,13 +16,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.logging.Level;
 
 public final class DExtras extends JavaPlugin {
-    //core
+    // Core
     private Utils utils;
     private Commands commands;
     private TabCompleter tabCompleter;
     private CoreCommandLogic coreCommandLogic;
 
-    //features
+    // Features
     private FirstJoin firstJoin;
     private TPRandom tpRandom;
     private NewPlayerPingNaspo newPlayerPingNaspo;
@@ -32,7 +32,6 @@ public final class DExtras extends JavaPlugin {
 
     private DiscoveryAnalytics discoveryAnalytics;
     private DiscoveryAnalyticsCmd discoveryAnalyticsCmd;
-
 
     @Override
     public void onEnable() {
@@ -61,10 +60,17 @@ public final class DExtras extends JavaPlugin {
                         "The FirstJoin feature will not be fully functional without it!");
             }
             if (this.getServer().getPluginManager().getPlugin("BetterRTP") == null) {
-                this.getLogger().log(Level.WARNING, "BetterRTP plugin could not be location which is a " +
+                this.getLogger().log(Level.WARNING, "BetterRTP plugin could not be located which is a " +
                         "soft-dependency of this plugin. " +
                         "The FirstJoin feature will not be fully functional without it!");
             }
+        }
+
+        // RestoreClaimBlocks (Checks GriefPrevention)
+        if (this.getServer().getPluginManager().getPlugin("GriefPrevention") == null) {
+            this.getLogger().log(Level.WARNING, "GriefPrevention plugin could not be located which is a " +
+                    "soft-dependency of this plugin. " +
+                    "This RestoreClaimBlocks feature will not work without it!");
         }
     }
 
