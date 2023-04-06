@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 import java.util.Arrays;
 
 //Command executor for all commands, except aliases.
-//Logic for core commands (help, reload) can be found here.
+//Logic for core commands (help, reload) can be found in the CoreCommandLogic class.
 //Logic for any other command is re-distributed to its own class.
 public class Commands implements CommandExecutor {
 

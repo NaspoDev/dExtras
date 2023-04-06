@@ -9,28 +9,29 @@ import me.dextras.dextras.features.discoveryanalytics.DiscoveryAnalytics;
 import me.dextras.dextras.features.huskdrops.HuskDrops;
 import me.dextras.dextras.features.newplayerpingnaspo.NewPlayerPingNaspo;
 import me.dextras.dextras.features.packprompt.PackPrompt;
+import me.dextras.dextras.features.restoreclaimblocks.RestoreClaimBlocks;
 import me.dextras.dextras.features.tprandom.TPRandom;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
 
 public final class DExtras extends JavaPlugin {
-    //core
+    // Core
     private Utils utils;
     private Commands commands;
     private TabCompleter tabCompleter;
     private CoreCommandLogic coreCommandLogic;
 
-    //features
+    // Features
     private FirstJoin firstJoin;
     private TPRandom tpRandom;
     private NewPlayerPingNaspo newPlayerPingNaspo;
     private HuskDrops huskDrops;
     private PackPrompt packPrompt;
+    private RestoreClaimBlocks restoreClaimBlocks;
 
     private DiscoveryAnalytics discoveryAnalytics;
     private DiscoveryAnalyticsCmd discoveryAnalyticsCmd;
-
 
     @Override
     public void onEnable() {
@@ -51,17 +52,26 @@ public final class DExtras extends JavaPlugin {
     }
 
     private void softDependencyCheck() {
-        //FirstJoin
+        // FirstJoin (Checks Essentials and BetterRTP)
         if (this.getConfig().getBoolean("FirstJoin")) {
             if (this.getServer().getPluginManager().getPlugin("Essentials") == null) {
-                this.getLogger().log(Level.WARNING, "Essentials plugin could not be location which is a " +
+                this.getLogger().log(Level.WARNING, "Essentials plugin could not be located which is a " +
                         "soft-dependency of this plugin. " +
                         "The FirstJoin feature will not be fully functional without it!");
             }
             if (this.getServer().getPluginManager().getPlugin("BetterRTP") == null) {
-                this.getLogger().log(Level.WARNING, "BetterRTP plugin could not be location which is a " +
+                this.getLogger().log(Level.WARNING, "BetterRTP plugin could not be located which is a " +
                         "soft-dependency of this plugin. " +
                         "The FirstJoin feature will not be fully functional without it!");
+            }
+        }
+
+        // RestoreClaimBlocks (Checks GriefPrevention)
+        if (this.getConfig().getBoolean("restore-claim-blocks")) {
+            if (this.getServer().getPluginManager().getPlugin("GriefPrevention") == null) {
+                this.getLogger().log(Level.WARNING, "GriefPrevention plugin could not be located which is a " +
+                        "soft-dependency of this plugin. " +
+                        "This RestoreClaimBlocks feature will not work without it!");
             }
         }
     }
@@ -79,6 +89,7 @@ public final class DExtras extends JavaPlugin {
         newPlayerPingNaspo = new NewPlayerPingNaspo(this);
         huskDrops = new HuskDrops();
         packPrompt = new PackPrompt(this);
+        restoreClaimBlocks = new RestoreClaimBlocks(this);
 
         discoveryAnalytics = new DiscoveryAnalytics(this);
         discoveryAnalyticsCmd = new DiscoveryAnalyticsCmd(this);
@@ -90,18 +101,20 @@ public final class DExtras extends JavaPlugin {
     // --- Constants to Register ---
 
     private void registerEvents() {
-        //FirstJoin
+        // FirstJoin
         if (this.getConfig().getBoolean("FirstJoin")) {
             this.getServer().getPluginManager().registerEvents(firstJoin, this);
         }
-        //NewPlayerPingNaspo
+        // NewPlayerPingNaspo
         this.getServer().getPluginManager().registerEvents(newPlayerPingNaspo, this);
-        //DiscoveryAnalytics
+        // DiscoveryAnalytics
         this.getServer().getPluginManager().registerEvents(discoveryAnalytics, this);
-        //HuskDrops
+        // HuskDrops
         this.getServer().getPluginManager().registerEvents(huskDrops, this);
-        //PackPrompt
+        // PackPrompt
         this.getServer().getPluginManager().registerEvents(packPrompt, this);
+        // RestoreClaimBlocks
+        this.getServer().getPluginManager().registerEvents(restoreClaimBlocks, this);
     }
 
     private void registerCommands() {

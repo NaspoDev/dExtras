@@ -20,6 +20,7 @@ public class Utils {
         reloadVars();
     }
 
+    // Reloads the configuration and calls to reload global plugin variables that depend on an updated config.
     public static void reloadConfigs() {
         plugin.reloadConfig();
 
@@ -31,6 +32,7 @@ public class Utils {
         prefix = plugin.getConfig().getString("messages.general.prefix");
     }
 
+    // Returns a Bukkit formatted chat color string.
     public static String chatColor(String text) {
         return ChatColor.translateAlternateColorCodes('&', text);
     }
