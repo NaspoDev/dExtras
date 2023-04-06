@@ -81,7 +81,7 @@ public class RestoreClaimBlocks implements Listener {
         // Send a message and play a sound to notify player that claim blocks have been restored.
         player.sendMessage(Utils.chatColor("&a" + claimBlocks + " &aclaim blocks for your rank have " +
                 "been restored."));
-        player.playSound(player.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_CHIME, 0.5f, 1.0f);
+        player.playSound(player.getLocation(), Sound.ENTITY_ARROW_HIT_PLAYER, 1.0f, 1.0f);
     }
 
 }
