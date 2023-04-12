@@ -27,7 +27,7 @@ pack-prompt:
 # Automatically restores the claim blocks of ranked players on first join (upon season turnover).
 restore-claim-blocks: true
 
-# When a player right-clicks the graves compass, open the graves menu for them.
+# When a player clicks the graves compass, open the graves menu for them.
 open-graves-menu: true
 
 messages:
