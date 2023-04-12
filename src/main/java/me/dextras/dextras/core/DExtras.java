@@ -8,6 +8,7 @@ import me.dextras.dextras.features.firstjoin.FirstJoin;
 import me.dextras.dextras.features.discoveryanalytics.DiscoveryAnalytics;
 import me.dextras.dextras.features.huskdrops.HuskDrops;
 import me.dextras.dextras.features.newplayerpingnaspo.NewPlayerPingNaspo;
+import me.dextras.dextras.features.opengravesmenu.OpenGravesMenu;
 import me.dextras.dextras.features.packprompt.PackPrompt;
 import me.dextras.dextras.features.restoreclaimblocks.RestoreClaimBlocks;
 import me.dextras.dextras.features.tprandom.TPRandom;
@@ -29,6 +30,7 @@ public final class DExtras extends JavaPlugin {
     private HuskDrops huskDrops;
     private PackPrompt packPrompt;
     private RestoreClaimBlocks restoreClaimBlocks;
+    private OpenGravesMenu openGravesMenu;
 
     private DiscoveryAnalytics discoveryAnalytics;
     private DiscoveryAnalyticsCmd discoveryAnalyticsCmd;
@@ -71,7 +73,16 @@ public final class DExtras extends JavaPlugin {
             if (this.getServer().getPluginManager().getPlugin("GriefPrevention") == null) {
                 this.getLogger().log(Level.WARNING, "GriefPrevention plugin could not be located which is a " +
                         "soft-dependency of this plugin. " +
-                        "This RestoreClaimBlocks feature will not work without it!");
+                        "The RestoreClaimBlocks feature will not work without it!");
+            }
+        }
+
+        // OpenGravesMenu (Checks Graves)
+        if (this.getConfig().getBoolean("open-graves-menu")) {
+            if (this.getServer().getPluginManager().getPlugin("Graves") == null) {
+                this.getLogger().log(Level.WARNING, "Graves plugin could not be located which is a " +
+                        "soft-dependency of this plugin. " +
+                        "The OpenGravesMenu feature will not work without it!");
             }
         }
     }
@@ -90,6 +101,7 @@ public final class DExtras extends JavaPlugin {
         huskDrops = new HuskDrops();
         packPrompt = new PackPrompt(this);
         restoreClaimBlocks = new RestoreClaimBlocks(this);
+        openGravesMenu = new OpenGravesMenu(this);
 
         discoveryAnalytics = new DiscoveryAnalytics(this);
         discoveryAnalyticsCmd = new DiscoveryAnalyticsCmd(this);
@@ -115,6 +127,8 @@ public final class DExtras extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(packPrompt, this);
         // RestoreClaimBlocks
         this.getServer().getPluginManager().registerEvents(restoreClaimBlocks, this);
+        // OpenGravesMenu
+        this.getServer().getPluginManager().registerEvents(openGravesMenu, this);
     }
 
     private void registerCommands() {
