@@ -21,7 +21,7 @@ public class OpenGravesMenu implements Listener {
     private void onRightClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
 
-        if (player.getInventory().getItemInMainHand().equals(Material.COMPASS)) {
+        if (player.getInventory().getItemInMainHand().getType() == Material.RECOVERY_COMPASS) {
             ItemMeta compassItemMeta = player.getInventory().getItemInMainHand().getItemMeta();
             if (compassItemMeta.getDisplayName().contains("'s Grave")) {
                 if (compassItemMeta.hasLore()) {
