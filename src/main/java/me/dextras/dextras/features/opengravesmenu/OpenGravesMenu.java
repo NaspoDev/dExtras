@@ -8,7 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.meta.ItemMeta;
 
-// When a player right-clicks on the grave compass, it opens the graves menu for them.
+// When a player clicks on the grave compass, it opens the graves menu for them.
 public class OpenGravesMenu implements Listener {
 
     private DExtras plugin;
